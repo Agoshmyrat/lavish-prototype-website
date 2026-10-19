@@ -14,7 +14,7 @@
  */
 window.LAVISH_CONFIG = Object.freeze({
   sheetEndpoint:
-    "https://script.google.com/macros/s/AKfycbzzBcdNcC1uu3RpBUaRiWY2NmizHfNSUsxXPrMVBUAfIvc32etmojAbJimxT6zBIQqoeQ/exec",
+    "https://script.google.com/macros/s/AKfycbzOhg9jNxG4biefEGu936oLBvhJlxA_hIpdHlOi4z976-qCYwET2bXFwAoXw_i5aGpy-Q/exec",
   phoneDisplay: "01438 222 215",
   requestTimeoutMs: 15000,
 
