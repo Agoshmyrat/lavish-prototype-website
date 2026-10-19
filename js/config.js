@@ -16,6 +16,7 @@ window.LAVISH_CONFIG = Object.freeze({
   sheetEndpoint:
     "https://script.google.com/macros/s/AKfycbzOhg9jNxG4biefEGu936oLBvhJlxA_hIpdHlOi4z976-qCYwET2bXFwAoXw_i5aGpy-Q/exec",
   phoneDisplay: "01438 222 215",
+   debug: true,
   requestTimeoutMs: 15000,
 
   // Menu hover photos. When a visitor rests the mouse on a dish for `delayMs`, a photo card appears.
