@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Content sections — highlights strip, about, the room, reviews
+   ========================================================================== */
+
+/* ---------- Highlights strip (marquee) ---------- */
+.strip {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+  padding: 22px 0;
+  overflow: hidden;
+}
+.strip-track {
+  display: flex; gap: 64px; white-space: nowrap; animation: scroll 32s linear infinite;
+  font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--ivory-dim);
+}
+.strip-track span { display: flex; align-items: center; gap: 64px; }
+.strip-track .sep { color: var(--brass-soft); font-style: normal; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .strip-track { animation: none; } }
+
+/* ---------- About ---------- */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+@media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 48px; } }
+
+.about-copy p { color: var(--ivory-dim); font-weight: 300; font-size: 1.05rem; margin-top: 20px; max-width: 46ch; }
+
+.about-visual {
+  position: relative; aspect-ratio: 4 / 5; border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(168, 67, 45, 0.5), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(184, 147, 90, 0.25), transparent 50%),
+    linear-gradient(160deg, #241C15, #100D0A);
+}
+.about-visual img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 47% center;
+}
+.about-visual::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 60%, rgba(20, 16, 13, 0.45));
+}
+
+.stat-row { display: flex; gap: 48px; margin-top: 44px; flex-wrap: wrap; }
+.stat .num   { font-family: var(--font-display); font-size: 2.4rem; color: var(--brass); }
+.stat .label { font-size: 0.82rem; color: var(--ivory-dim); margin-top: 4px; }
+
+/* ---------- The room ---------- */
+.experience { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.exp-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; }
+@media (max-width: 900px) { .exp-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+.exp-lead { color: var(--ivory-dim); margin-top: 16px; max-width: 44ch; font-weight: 300; }
+.exp-list { margin-top: 32px; display: flex; flex-direction: column; gap: 0; }
+.exp-item { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+.exp-item:last-child { border-bottom: 1px solid var(--line); }
+.exp-item .mark { color: var(--brass); font-family: var(--font-display); font-style: italic; font-size: 1rem; flex-shrink: 0; width: 24px; }
+.exp-item h4 { font-family: var(--font-body); font-weight: 600; font-size: 0.98rem; color: var(--fg); }
+.exp-item p  { color: var(--ivory-dim); font-size: 0.9rem; font-weight: 300; margin-top: 4px; }
+
+.exp-visual { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); }
+.exp-visual img { width: 100%; height: 100%; object-fit: cover; object-position: 60% center; display: block; }
+
+/* ---------- Reviews ---------- */
+.review-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+@media (max-width: 840px) { .review-strip { grid-template-columns: 1fr; } }
+.review-card { background: var(--charcoal); padding: 36px 32px; }
+.review-card .stars { color: var(--brass); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 16px; }
+.review-card p { color: var(--ivory-dim); font-size: 0.95rem; font-weight: 300; line-height: 1.7; }
+.review-card .who { margin-top: 20px; font-size: 0.82rem; color: var(--ivory-dim); font-family: var(--font-display); font-style: italic; }

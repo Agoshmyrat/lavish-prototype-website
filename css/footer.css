@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Site footer
+   Top band: brand, online links, call to action. Then four tidy columns. Then a small bottom bar.
+   ========================================================================== */
+
+.site-footer { position: relative; border-top: 1px solid var(--line); padding: 72px 0 32px; background: var(--charcoal-2, transparent); }
+.site-footer::before {   /* thin brass thread across the top edge */
+  content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass), transparent); opacity: .6;
+}
+
+/* ---------- top band ---------- */
+.footer-top {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 28px 40px;
+  padding-bottom: 44px; margin-bottom: 48px; border-bottom: 1px solid var(--line);
+}
+.footer-brand { display: flex; align-items: center; gap: 16px; }
+.footer-brand img { width: 40px; height: auto; flex-shrink: 0; }
+.footer-brand > div { display: flex; flex-direction: column; gap: 4px; }
+.footer-name { font-family: var(--font-display); font-size: 1.7rem; letter-spacing: .04em; line-height: 1; }
+.footer-tag { font-size: .8rem; color: var(--ivory-dim); letter-spacing: .08em; text-transform: uppercase; }
+
+.footer-top-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px;
+  border: 1px solid var(--line); border-radius: 50%; color: var(--ivory-dim);
+  transition: color .3s, background .3s, border-color .3s, transform .3s;
+}
+.footer-social a:hover, .footer-social a:focus-visible { color: var(--charcoal); background: var(--brass); border-color: var(--brass); transform: translateY(-2px); }
+
+/* ---------- columns ---------- */
+.footer-grid { display: grid; grid-template-columns: 1.1fr 1fr 1.25fr 1fr; gap: 40px 48px; align-items: start; }
+.footer-col h5 {
+  font-family: var(--font-body); font-weight: 600; font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--brass); margin: 0 0 18px;
+}
+.footer-col a { display: block; width: fit-content; max-width: 100%; font-size: .92rem; color: var(--ivory-dim); margin-bottom: 11px; overflow-wrap: anywhere; transition: color .25s, transform .3s; }
+.footer-col a:hover, .footer-col a:focus-visible { color: var(--fg); transform: translateX(3px); }
+.footer-col address { font-style: normal; font-size: .92rem; line-height: 1.75; color: var(--ivory-dim); margin-bottom: 14px; }
+.footer-note { font-size: .84rem; color: var(--ivory-dim); opacity: .8; margin: 0 0 6px; }
+
+/* ---------- bottom bar ---------- */
+.footer-bottom {
+  margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 24px;
+  font-size: .78rem; color: var(--ivory-dim);
+}
+.footer-up { color: var(--ivory-dim); transition: color .25s; }
+.footer-up:hover, .footer-up:focus-visible { color: var(--brass); }
+
+@media (max-width: 960px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) {
+  .site-footer { padding-top: 56px; }
+  .footer-top { flex-direction: column; align-items: flex-start; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* address link to Google Maps */
+.footer-col address .map-link { display: block; width: fit-content; color: var(--ivory-dim); margin: 0; transition: color .25s; }
+.footer-col address .map-link span { color: var(--brass); display: inline-block; transition: transform .3s; }
+.footer-col address .map-link:hover, .footer-col address .map-link:focus-visible { color: var(--fg); transform: none; }
+.footer-col address .map-link:hover span { transform: translate(2px, -2px); }

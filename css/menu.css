@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Menu — tabs, accordion sections, dishes, wines, banners
+   ========================================================================== */
+
+/* ---------- Menu tabs ---------- */
+.menu-supertabs {
+  display: flex; gap: 10px; margin-bottom: 64px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--line); padding-bottom: 24px;
+}
+.menu-supertab {
+  padding: 11px 20px; font-size: 0.82rem; letter-spacing: 0.02em; border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--ivory-dim); cursor: pointer; transition: all .2s ease; background: transparent;
+  font-family: var(--font-body);
+}
+.menu-supertab[aria-selected="true"],
+.menu-supertab:hover { border-color: var(--brass); color: var(--charcoal); background: var(--brass); }
+
+.menu-superpanel:not([hidden]) { animation: fadeIn .3s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.sd-label { font-family: var(--font-body); font-style: normal; font-size: 0.7rem; color: var(--ivory-dim); letter-spacing: 0.02em; }
+
+/* ---------- PDF link ---------- */
+.pdf-link-row { text-align: right; margin-bottom: 20px; }
+.pdf-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.78rem; color: var(--ivory-dim); letter-spacing: 0.02em;
+  transition: color .2s ease;
+}
+.pdf-link:hover { color: var(--brass); }
+.pdf-link svg { opacity: 0.7; }
+
+/* ---------- Accordion (native <details>) ---------- */
+.acc { border-bottom: 1px solid var(--line); }
+.acc:first-of-type { border-top: 1px solid var(--line); }
+.acc > summary { list-style: none; }
+.acc > summary::-webkit-details-marker { display: none; }
+
+.acc-head {
+  display: flex; align-items: center; gap: 20px; width: 100%;
+  padding: 24px 0; cursor: pointer;
+  font-family: var(--font-body); color: var(--fg); transition: color .2s ease;
+}
+.acc-head:hover { color: var(--brass); }
+.acc-head:focus-visible { outline: 2px solid var(--brass); outline-offset: 4px; }
+
+.acc-title {
+  font-family: var(--font-display); font-style: italic; font-size: 1.35rem; color: inherit;
+  white-space: nowrap; flex-shrink: 0;
+}
+.acc-preview {
+  flex: 1 1 auto; min-width: 0;
+  font-size: 0.8rem; font-weight: 300; color: var(--ivory-dim);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  opacity: 0.7; transition: opacity .25s ease;
+}
+.acc[open] .acc-preview { opacity: 0; }
+
+.acc-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; color: var(--brass); }
+.acc-icon::before, .acc-icon::after {
+  content: ''; position: absolute; background: currentColor; transition: transform .3s ease, opacity .3s ease;
+}
+.acc-icon::before { left: 0; right: 0; top: 50%; height: 1px; transform: translateY(-50%); }
+.acc-icon::after  { top: 0; bottom: 0; left: 50%; width: 1px; transform: translateX(-50%); }
+.acc[open] .acc-icon::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+
+.acc-body { padding-bottom: 36px; animation: accOpen .35s ease; }
+@keyframes accOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .acc-body { animation: none; } }
+@media (max-width: 700px) {
+  .acc-title { font-size: 1.1rem; white-space: normal; }
+  .acc-preview { display: none; }
+  .acc-head { gap: 12px; padding: 20px 0; }
+}
+
+/* ---------- Dishes, sides and wines ---------- */
+.menu-intro {
+  color: var(--ivory-dim); font-weight: 300; font-size: 0.95rem; max-width: 64ch; margin-bottom: 36px; font-style: italic;
+  font-family: var(--font-display);
+}
+
+.dish-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+@media (max-width: 700px) { .dish-grid { grid-template-columns: 1fr; } }
+.dish { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.dish-top { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+.dish-top h3 { font-size: 1.05rem; font-weight: 500; color: var(--fg); }
+.dish-price { font-family: var(--font-display); font-style: italic; color: var(--brass); font-size: 1rem; white-space: nowrap; flex-shrink: 0; }
+.dish p { color: var(--ivory-dim); font-size: 0.88rem; font-weight: 300; margin-top: 6px; max-width: 44ch; line-height: 1.6; }
+.tag-list { color: var(--ivory-dim); opacity: 0.7; }
+.new-tag {
+  font-size: 0.62rem; color: var(--ember-bright); border: 1px solid var(--ember); border-radius: var(--radius);
+  padding: 1px 5px; vertical-align: middle; letter-spacing: 0.04em; margin-left: 6px;
+}
+.chef-hat { color: var(--brass); font-size: 0.75rem; vertical-align: top; }
+
+.side-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+@media (max-width: 700px) { .side-list { grid-template-columns: 1fr; } }
+.side-item {
+  display: flex; justify-content: space-between; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+.side-item span:first-child { color: var(--fg); font-weight: 400; }
+.side-item span:last-child  { color: var(--brass); font-family: var(--font-display); font-style: italic; white-space: nowrap; }
+
+.wine-list { display: flex; flex-direction: column; }
+.wine-item {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 24px;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.wine-item h4 { font-family: var(--font-body); font-weight: 600; font-size: 0.95rem; color: var(--fg); display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.wine-item h4 span { font-weight: 300; color: var(--ivory-dim); font-size: 0.78rem; font-style: italic; font-family: var(--font-display); }
+.wine-item p { color: var(--ivory-dim); font-size: 0.85rem; font-weight: 300; margin-top: 4px; max-width: 48ch; }
+.wine-price { font-family: var(--font-display); font-style: italic; color: var(--brass); font-size: 0.92rem; white-space: nowrap; flex-shrink: 0; padding-top: 2px; }
+
+/* ---------- Banners and notes ---------- */
+.price-banner {
+  display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  border: 1px solid var(--line); padding: 20px 26px; margin-bottom: 56px; border-radius: var(--radius);
+  background: rgba(184, 147, 90, 0.04);
+}
+.price-banner span { font-size: 0.85rem; color: var(--ivory-dim); }
+.price-banner span:first-child { color: var(--brass); font-family: var(--font-display); font-style: italic; font-size: 0.95rem; width: 100%; margin-bottom: 4px; }
+
+.callout-banner {
+  border: 1px solid var(--brass-soft); padding: 28px 32px; margin-bottom: 56px; border-radius: var(--radius);
+  background: rgba(184, 147, 90, 0.06);
+}
+.callout-banner h4 { font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--brass); margin-bottom: 8px; }
+.callout-banner p  { color: var(--ivory-dim); font-size: 0.9rem; font-weight: 300; }
+
+.menu-fine-print { color: var(--ivory-dim); font-size: 0.78rem; font-weight: 300; margin-top: 32px; opacity: 0.8; line-height: 1.6; }
+
+.menu-note {
+  margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line);
+  color: var(--ivory-dim); font-size: 0.9rem; font-weight: 300; font-style: italic; font-family: var(--font-display);
+}

@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Design tokens — the single source of truth for colour, type and shape
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Palette */
+  --charcoal:     #14100D;
+  --charcoal-2:   #1C1712;
+  --ember:        #A8432D;
+  --ember-bright: #C1572E;
+  --brass:        #B8935A;
+  --brass-soft:   #8E7248;
+  --ivory:        #EDE6DA;
+  --ivory-dim:    #C9BFAE;
+  --line:         rgba(237, 230, 218, 0.14);
+
+  /* Semantic aliases (use these in components) */
+  --bg:   var(--charcoal);
+  --bg-2: var(--charcoal-2);
+  --fg:   var(--ivory);
+
+  /* Typography */
+  --font-display: 'Fraunces', serif;
+  --font-body:    'Manrope', system-ui, -apple-system, sans-serif;
+
+  /* Shape */
+  --radius: 2px;
+}

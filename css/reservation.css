@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Reservation section and booking form
+   ========================================================================== */
+
+.reserve {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(168, 67, 45, 0.25), transparent 60%),
+    var(--charcoal);
+  border-top: 1px solid var(--line);
+}
+.reserve-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+@media (max-width: 900px) { .reserve-grid { grid-template-columns: 1fr; gap: 56px; } }
+.reserve h2 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); max-width: 12ch; line-height: 1.15; }
+.reserve-copy { color: var(--ivory-dim); margin-top: 20px; max-width: 40ch; font-weight: 300; }
+
+.contact-list { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; }
+.contact-list a, .contact-list div { display: flex; gap: 14px; align-items: flex-start; font-size: 0.95rem; }
+.contact-list .k { color: var(--brass); width: 90px; flex-shrink: 0; font-size: 0.78rem; letter-spacing: 0.03em; padding-top: 3px; }
+.contact-list .v { color: var(--fg); }
+.contact-list a:hover .v { color: var(--brass); }
+
+/* ---------- Booking form ---------- */
+.book-panel { border: 1px solid var(--line); padding: 44px; border-radius: var(--radius); background: rgba(237, 230, 218, 0.02); }
+.book-panel h3 { font-size: 1.4rem; margin-bottom: 8px; }
+.book-panel > p { color: var(--ivory-dim); font-size: 0.9rem; font-weight: 300; margin-bottom: 32px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field--full { margin-bottom: 16px; }
+.field label { font-size: 0.78rem; color: var(--ivory-dim); letter-spacing: 0.02em; }
+.field input, .field select {
+  background: transparent; border: 1px solid var(--line); color: var(--fg);
+  padding: 12px 14px; font-family: var(--font-body); font-size: 0.92rem; border-radius: var(--radius);
+  outline: none; transition: border-color .2s ease;
+}
+.field input:focus, .field select:focus { border-color: var(--brass); }
+.field select option { background: var(--charcoal); }
+
+/* Spam trap: invisible to people, tempting to bots. */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.book-submit {
+  width: 100%; margin-top: 8px; background: var(--ember); color: var(--ivory); border: none;
+  padding: 16px; font-size: 0.92rem; font-weight: 500; border-radius: var(--radius); cursor: pointer;
+  transition: background .25s ease; font-family: var(--font-body);
+}
+.book-submit:hover { background: var(--ember-bright); }
+.book-submit:disabled { opacity: 0.6; cursor: progress; }
+
+.form-error { margin-top: 14px; font-size: 0.84rem; color: var(--ember-bright); text-align: center; }
+.form-confirm { text-align: center; padding: 24px 0; color: var(--ivory-dim); font-family: var(--font-display); font-style: italic; }
+.form-confirm .link-button {
+  display: inline-block; margin-top: 18px; padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 0.85rem; color: var(--brass); border-bottom: 1px solid var(--brass-soft);
+}
+.book-note { margin-top: 16px; font-size: 0.8rem; color: var(--ivory-dim); text-align: center; }
+
+/* ---------- "Book on OpenTable" shortcut under the request form ---------- */
+.book-or { display: flex; align-items: center; gap: 14px; margin: 22px 0 16px; color: var(--ivory-dim); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+.book-or::before, .book-or::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.book-opentable {
+  display: flex; align-items: center; gap: 16px; padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--radius, 2px);
+  color: var(--fg); transition: border-color .3s, background .3s, transform .3s;
+}
+.book-opentable .icon {
+  flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px;
+  border: 1px solid var(--brass-soft, var(--brass)); border-radius: 50%; color: var(--brass); transition: color .3s, background .3s, border-color .3s;
+}
+.book-opentable .txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.book-opentable b { font-weight: 500; font-size: .95rem; }
+.book-opentable small { color: var(--ivory-dim); font-size: .78rem; font-weight: 300; }
+.book-opentable:hover, .book-opentable:focus-visible { border-color: var(--brass); background: rgba(184, 147, 90, .06); transform: translateY(-1px); }
+.book-opentable:hover .icon, .book-opentable:focus-visible .icon { color: var(--charcoal); background: var(--brass); border-color: var(--brass); }
+
+/* The address in the contact list is a Google Maps link that looks exactly like the other lines. */
+.contact-list a.contact-map { color: inherit; border: 0; text-decoration: none; }
+.contact-list a.contact-map:hover, .contact-list a.contact-map:focus-visible { color: var(--brass); }

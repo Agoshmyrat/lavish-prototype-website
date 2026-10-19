@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Site header and primary navigation
+   ========================================================================== */
+
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: linear-gradient(180deg, rgba(20, 16, 13, 0.92), rgba(20, 16, 13, 0));
+  padding: 22px 0 40px;
+  transition: background 0.3s ease;
+}
+.site-header.is-scrolled {
+  background: rgba(20, 16, 13, 0.96);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav { display: flex; align-items: center; justify-content: space-between; }
+.nav-actions { display: flex; align-items: center; gap: 22px; }
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark { flex-shrink: 0; height: 32px; width: auto; }
+.brand .dot { color: var(--ember-bright); font-size: 0.9rem; }
+.brand-sub  { font-size: 0.9rem; font-weight: 300; color: var(--ivory-dim); }
+
+.navlinks { display: flex; gap: 36px; font-size: 0.92rem; color: var(--ivory-dim); }
+.navlinks a { position: relative; transition: color .25s ease; }
+.navlinks a:hover { color: var(--fg); }
+.navlinks a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px;
+  background: var(--brass); transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+}
+.navlinks a:hover::after { transform: scaleX(1); }
+
+.nav-social { display: flex; align-items: center; gap: 22px; color: var(--ivory-dim); padding: 0 10px; }
+.nav-social a { display: flex; transition: color .25s ease; transform-origin: 50% 50%; will-change: transform; }
+.nav-social a:hover { color: var(--brass); }
+
+.nav-cta {
+  border: 1px solid var(--brass-soft); padding: 10px 22px; font-size: 0.85rem; border-radius: var(--radius);
+  color: var(--fg); transition: all .25s ease; white-space: nowrap;
+}
+.nav-cta:hover { background: var(--brass); border-color: var(--brass); color: var(--charcoal); }
+
+@media (max-width: 840px) {
+  .navlinks { display: none; }
+  .nav-cta { padding: 8px 16px; font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+  .nav-social { display: none; }
+  .brand { white-space: nowrap; }
+}
+
+/* ---------- Logo: a slow shimmer, a breathing glow and a pulsing ember dot (see also motion rules) ---------- */
+
+/* ---------- OpenTable shortcut next to "Reserve a table" ---------- */
+.nav-book { display: flex; align-items: center; gap: 10px; }
+.nav-opentable {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%;
+  color: var(--brass); transition: color .3s, border-color .3s, background .3s, transform .3s;
+}
+.nav-opentable:hover, .nav-opentable:focus-visible { color: var(--charcoal); background: var(--brass); border-color: var(--brass); transform: translateY(-1px); }
+/* tooltip */
+.nav-opentable::after {
+  content: attr(data-tip); position: absolute; top: calc(100% + 10px); right: 0; white-space: nowrap;
+  padding: 6px 10px; font-size: .74rem; letter-spacing: .02em; color: var(--ivory); background: var(--charcoal-2);
+  border: 1px solid var(--line); border-radius: 4px; opacity: 0; transform: translateY(-4px); pointer-events: none;
+  transition: opacity .25s, transform .25s;
+}
+.nav-opentable:hover::after, .nav-opentable:focus-visible::after { opacity: 1; transform: none; }
+@media (max-width: 700px) { .nav-opentable { display: none; } }  /* the hero has a full "Book on OpenTable" button on phones */
